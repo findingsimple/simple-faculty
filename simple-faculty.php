@@ -116,6 +116,8 @@ class Simple_Faculty {
 			'menu_name'			 => __( 'Faculty', self::$text_domain )
 		);
 		
+		$labels = apply_filters( self::$post_type_name . '_cpt_labels', $labels );
+
 		$args = array(
 			'description' => __( 'Information about faculty members.', self::$text_domain ),
 			'labels' => $labels,
@@ -132,6 +134,8 @@ class Simple_Faculty {
 			'supports' => array('title', 'editor', 'thumbnail', 'excerpt')
 		); 
 		
+		$args = apply_filters( self::$post_type_name . '_cpt_args' , $args );
+
 		register_post_type( self::$post_type_name , $args );
 		
 	}
