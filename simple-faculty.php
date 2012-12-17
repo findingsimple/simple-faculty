@@ -306,7 +306,7 @@ class Simple_Faculty {
 	}	
 	
 	/**
-	 * Add a column to the manage pages page to display the team member thumbnail. 
+	 * Add a column to the manage pages page to display the faculty member thumbnail. 
 	 * 
 	 * @since 1.0
 	 * @author Jason Conroy
@@ -328,7 +328,7 @@ class Simple_Faculty {
 	}	
 	
 	/**
-	 * Add the team member thumbnail to the custom column on the manage page.
+	 * Add the faculty member thumbnail to the custom column on the manage page.
 	 * 
 	 * @since 1.0
 	 * @author Jason Conroy
