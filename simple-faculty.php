@@ -159,15 +159,42 @@ class Simple_Faculty {
 		); 	
 		
 		register_taxonomy( 
-			'simple_qualification',
+			'faculty_qualification',
 			array( self::$post_type_name ), 
 			array(
-			'hierarchical' => true,
+			'hierarchical' => false,
 			'labels' => $labels,
 			'show_ui' => true,
 			'show_admin_column' => true,
 			'query_var' => false,
 			'rewrite' => array( 'slug' => 'qualification' ),
+			)
+		);
+
+		$labels = array(
+			'name' => _x( 'Roles', 'role taxonomy' ),
+			'singular_name' => _x( 'Role', 'role taxonomy' ),
+			'search_items' =>  __( 'Search Roles' ),
+			'all_items' => __( 'All Roles' ),
+   			'parent_item' => __( 'Parent Role' ),
+   			'parent_item_colon' => __( 'Parent Role:' ),
+			'edit_item' => __( 'Edit Role' ), 
+			'update_item' => __( 'Update Role' ),
+			'add_new_item' => __( 'Add New Role' ),
+			'new_item_name' => __( 'New Role' ),
+			'menu_name' => __( 'Roles' ),
+		); 	
+		
+		register_taxonomy( 
+			'faculty_role',
+			array( self::$post_type_name ), 
+			array(
+			'hierarchical' => false,
+			'labels' => $labels,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'query_var' => false,
+			'rewrite' => array( 'slug' => 'role' ),
 			)
 		);
 	
@@ -243,9 +270,9 @@ class Simple_Faculty {
 		?>
 
 		<p>
-			<label for='faculty-members-role'>
-				<?php _e( 'Role:', self::$text_domain ); ?>
-				<input type='text' id='faculty-members-role' name='faculty-members-role' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-role', true ) ); ?>' />
+			<label for='faculty-members-position'>
+				<?php _e( 'Positon:', self::$text_domain ); ?>
+				<input type='text' id='faculty-members-position' name='faculty-members-position' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-position', true ) ); ?>' />
 			</label>
 		</p>
 
@@ -328,7 +355,7 @@ class Simple_Faculty {
 			return $post_id;
 
 		$meta = array(
-			'faculty-members-role',
+			'faculty-members-position',
 			'faculty-members-email',
 			'faculty-members-phone',
 			'faculty-members-website',
