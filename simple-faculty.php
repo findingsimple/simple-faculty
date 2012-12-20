@@ -226,6 +226,7 @@ class Simple_Faculty {
 	 */
 	public static function add_meta_box() {
 		add_meta_box( 'member-details', __( 'Member Details', self::$text_domain  ), array( __CLASS__, 'do_details_meta_box' ), self::$post_type_name , 'normal', 'high' );
+		add_meta_box( 'member-contact', __( 'Contact Details', self::$text_domain  ), array( __CLASS__, 'do_contact_meta_box' ), self::$post_type_name , 'normal', 'high' );
 		add_meta_box( 'member-social', __( 'Social Details', self::$text_domain  ), array( __CLASS__, 'do_social_meta_box' ), self::$post_type_name , 'normal', 'high' );
 	}
 
@@ -247,18 +248,47 @@ class Simple_Faculty {
 				<input type='text' id='faculty-members-role' name='faculty-members-role' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-role', true ) ); ?>' />
 			</label>
 		</p>
+
+<?php
+	}
+
+	/**
+	 * Output the contact details meta box HTML
+	 *
+	 * @param WP_Post $object Current post object
+	 * @param array $box Metabox information
+	 */
+	public static function do_contact_meta_box( $object, $box ) {
+	
+		wp_nonce_field( basename( __FILE__ ), 'faculty-member' );
+
+		?>
+
 		<p>
 			<label for='faculty-members-email'>
 				<?php _e( 'Email:', self::$text_domain ); ?>
 				<input type='text' id='faculty-members-email' name='faculty-members-email' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-email', true ) ); ?>' />
 			</label>
 		</p>
+		<p>
+			<label for='faculty-members-phone'>
+				<?php _e( 'Phone:', self::$text_domain  ); ?>
+				<input type='text' id='faculty-members-phone' name='faculty-members-phone' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-phone', true ) ); ?>' />
+			</label>
+		</p>
+		<p>
+			<label for='faculty-members-website'>
+				<?php _e( 'Website:', self::$text_domain  ); ?>
+				<input type='text' id='faculty-members-website' name='faculty-members-website' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-website', true ) ); ?>' />
+			</label>
+		</p>
 
 <?php
-	}
+	}	
+	
 	
 	/**
-	 * Output the member details meta box HTML
+	 * Output the social details meta box HTML
 	 *
 	 * @param WP_Post $object Current post object
 	 * @param array $box Metabox information
@@ -300,6 +330,8 @@ class Simple_Faculty {
 		$meta = array(
 			'faculty-members-role',
 			'faculty-members-email',
+			'faculty-members-phone',
+			'faculty-members-website',
 			'faculty-members-twitter',
 			'faculty-members-linkedin'
 		);
