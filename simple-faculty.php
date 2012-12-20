@@ -71,6 +71,8 @@ class Simple_Faculty {
 
 		add_action( 'init', array( __CLASS__, 'register' ) );
 		
+		add_action( 'init', array( __CLASS__, 'register_taxonomy' ) );
+		
 		add_filter( 'post_updated_messages', array( __CLASS__, 'updated_messages' ) );
 		
 		add_action( 'add_meta_boxes', array( __CLASS__, 'add_meta_box' ) );
@@ -139,6 +141,38 @@ class Simple_Faculty {
 		register_post_type( self::$post_type_name , $args );
 		
 	}
+	
+	public static function register_taxonomy() {
+
+		$labels = array(
+			'name' => _x( 'Qualifications', 'qualification taxonomy' ),
+			'singular_name' => _x( 'Qualification', 'qualification taxonomy' ),
+			'search_items' =>  __( 'Search Qualifications' ),
+			'all_items' => __( 'All Qualifications' ),
+   			'parent_item' => __( 'Parent Qualification' ),
+   			'parent_item_colon' => __( 'Parent Qualification:' ),
+			'edit_item' => __( 'Edit Qualification' ), 
+			'update_item' => __( 'Update Qualification' ),
+			'add_new_item' => __( 'Add New Qualification' ),
+			'new_item_name' => __( 'New Qualification' ),
+			'menu_name' => __( 'Qualifications' ),
+		); 	
+		
+		register_taxonomy( 
+			'simple_qualification',
+			array( self::$post_type_name ), 
+			array(
+			'hierarchical' => true,
+			'labels' => $labels,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'query_var' => false,
+			'rewrite' => array( 'slug' => 'qualification' ),
+			)
+		);
+	
+	}
+	
 
 	/**
 	 * Filter the "post updated" messages
