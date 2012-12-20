@@ -399,7 +399,7 @@ class Simple_Faculty {
 	}
 	
 	/**
-	 * Replaces the 'Featured Image' label with 'Faculty Member Avatar' on the Edit page for the simple_faculty post type.
+	 * Replaces the 'Featured Image' label with 'Faculty Member Thumbnail' on the Edit page for the simple_faculty post type.
 	 *
 	 * @author Brent Shepherd <brent@findingsimple.com>
 	 * @package Simple Faculty
