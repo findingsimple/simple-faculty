@@ -271,7 +271,7 @@ class Simple_Faculty {
 
 		<p>
 			<label for='faculty-members-position'>
-				<?php _e( 'Positon:', self::$text_domain ); ?>
+				<?php _e( 'Positon/Title:', self::$text_domain ); ?>
 				<input type='text' id='faculty-members-position' name='faculty-members-position' value='<?php echo esc_attr( get_post_meta( $object->ID, '_faculty-members-position', true ) ); ?>' />
 			</label>
 		</p>
