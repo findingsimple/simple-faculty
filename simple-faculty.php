@@ -4,7 +4,7 @@ Plugin Name: Simple Faculty
 Plugin URI: http://plugins.findingsimple.com
 Description: Adds the "Team Member" CPT.
 Version: 1.0
-Author: Finding Simple ( Jason Conroy & Brent Shepherd)
+Author: Finding Simple
 Author URI: http://findingsimple.com
 License: GPL2
 */
